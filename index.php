@@ -23,10 +23,10 @@ echo "<h3>Entrada:</h3>";
 print_r([
     'nome' => 'Maria Oliveira',
     'email' => 'maria@email.com',
-    'senha' => 'SenhA@%123'
+    'senha' => 'Senha123'
 ]);
 
-$result = $manager->register('Maria Oliveira', 'maria@email.com', 'SenhA@%123');
+$result = $manager->register('Maria Oliveira', 'maria@email.com', 'Senha123');
 echo "<h3>Resultado:</h3>";
 print_r($result);
 
@@ -89,3 +89,4 @@ print_r($users);
 echo "<hr>";
 
 echo "</pre>";
+
