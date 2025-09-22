@@ -84,13 +84,6 @@ Array
 
 )
 
-🛠 Tecnologias utilizadas
-PHP 8+
-
-POO
-
-PSR-12
-
 📂 Estrutura do projeto
 pgsql
 Copiar código
@@ -105,3 +98,4 @@ Não é utilizado banco de dados (os dados são mantidos em memória para fins d
 
 
 Para produção, seria necessário integrar com MySQL/PostgreSQL.
+
