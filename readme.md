@@ -13,12 +13,9 @@ RA: 2001443
 2. Certifique-se de que o Apache/PHP está rodando.
 3. Acesse no navegador:
 
-http://localhost/usuarios
+http://localhost/user_manager
 
-yaml
-Copiar código
-
-> Obs.: `usuarios` deve ser o nome da pasta onde você colocou os arquivos do projeto.
+> Obs.: `user_manager` deve ser o nome da pasta onde você colocou os arquivos do projeto.
 
 ---
 
@@ -38,9 +35,10 @@ Copiar código
 
 O projeto possui testes demonstrados no arquivo `index.php`.
 
-### 🔹 Caso 1 — Cadastro válido
-**Entrada:**
 ```php
+🔹 Caso 1 — Cadastro válido
+Entrada:
+
 ['nome' => 'Maria Oliveira', 'email' => 'maria@email.com', 'senha' => 'SenhA@%123']
 Resultado esperado:
 ✅ Usuário cadastrado com sucesso.
@@ -48,8 +46,6 @@ Resultado esperado:
 🔹 Caso 2 — Cadastro com e-mail inválido
 Entrada:
 
-php
-Copiar código
 ['nome' => 'Pedro', 'email' => 'pedro@@email', 'senha' => 'Senha123']
 Resultado esperado:
 ❌ E-mail inválido.
@@ -57,8 +53,6 @@ Resultado esperado:
 🔹 Caso 3 — Tentativa de login com senha errada
 Entrada:
 
-php
-Copiar código
 ['email' => 'joao@email.com', 'senha' => 'Errada123']
 Resultado esperado:
 ❌ Credenciais inválidas.
@@ -66,8 +60,6 @@ Resultado esperado:
 🔹 Caso 4 — Reset de senha válido
 Entrada:
 
-php
-Copiar código
 ['id' => 1, 'nova_senha' => 'NovaSenha1@']
 Resultado esperado:
 ✅ Senha alterada com sucesso.
@@ -75,11 +67,22 @@ Resultado esperado:
 🔹 Caso 5 — Cadastro de usuário com e-mail duplicado
 Entrada:
 
-php
-Copiar código
 ['nome' => 'Outro João', 'email' => 'joao@email.com', 'senha' => 'Senha123']
 Resultado esperado:
 ❌ E-mail já está em uso.
+
+🔹 Caso Extra - Array com dados salvos: senha em hash
+Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [nome] => João Silva
+            [email] => joao@email.com
+            [senha] => $2y$10$AOcgIV2Ch6yF3yYNU.nD4OswbMokVCkR0BsDyd1.0.hTVn/sA6Mhm
+        )
+
+)
 
 🛠 Tecnologias utilizadas
 PHP 8+
@@ -87,8 +90,6 @@ PHP 8+
 POO
 
 PSR-12
-
-Princípios SOLID (aplicados em menor escala)
 
 📂 Estrutura do projeto
 pgsql
@@ -101,5 +102,6 @@ src/
 index.php
 📌 Observações
 Não é utilizado banco de dados (os dados são mantidos em memória para fins de demonstração).
+
 
 Para produção, seria necessário integrar com MySQL/PostgreSQL.
