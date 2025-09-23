@@ -96,11 +96,12 @@ class UserManager
 
     private function success(string $message): array
     {
-        return ['status' => true, 'message' => $message];
+        return ['success' => true, 'message' => $message];
     }
 
     private function error(string $message): array
     {
-        return ['status' => false, 'message' => $message];
+        return ['error' => false, 'message' => $message];
     }
 }
+
