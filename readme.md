@@ -73,7 +73,7 @@ O arquivo `index.php` demonstra os seguintes cenários:
 
 ### Caso 5: Cadastro com E-mail Duplicado
 - **Entrada**:  
-`['nome' => 'Outro João', 'email' => 'joao@email.com', 'senha' => 'Senha123']`  
+`['nome' => 'Outra Maria', 'email' => 'maria@email.com', 'senha' => 'Senha123']`  
 - **Resultado**: ❌ E-mail já está em uso.  
 
 ### Caso Extra: Array de Usuários (Senha em Hash)

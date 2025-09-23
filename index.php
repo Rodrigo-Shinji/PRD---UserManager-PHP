@@ -5,14 +5,7 @@ require_once './src/docs/User.php';
 require_once './src/docs/Validator.php';
 session_start();
 
-$users = [[
-    'id' => 1,
-    'nome' => 'João Silva',
-    'email' => 'joao@email.com',
-    'senha' => password_hash('Senha123', PASSWORD_DEFAULT)
-]];
-
-$manager = new UserManager($users);
+$manager = new UserManager();
 
 echo "<pre>";
 echo "<h1>Casos de Teste - Sistema de Usuários</h1>";
@@ -75,12 +68,12 @@ echo "<h2>Caso 5 — Cadastro de usuário com e-mail duplicado</h2>";
 echo "<h3>Entrada:</h3>";
 
 print_r([
-    'nome' => 'Outro João',
-    'email' => 'joao@email.com',
+    'nome' => 'Outra Maria',
+    'email' => 'maria@email.com',
     'senha' => 'Senha123'
 ]);
 
-$result = $manager->register('Outro João', 'joao@email.com', 'Senha123');
+$result = $manager->register('Outra Maria', 'maria@email.com', 'Senha123');
 echo "<h3>Resultado:</h3>";
 print_r($result);
 echo "<hr>";

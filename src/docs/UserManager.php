@@ -5,18 +5,9 @@ class UserManager
     private array $users = [];
     private Validator $validator;
 
-    public function __construct(array $users = [])
+    public function __construct()
     {
         $this->validator = new Validator();
-
-        foreach ($users as $u) {
-        $this->users[] = new User(
-            $u['id'],
-            $u['nome'],
-            $u['email'],
-            $u['senha']
-        );
-    }
     }
 
     public function register(string $name, string $email, string $password): array
