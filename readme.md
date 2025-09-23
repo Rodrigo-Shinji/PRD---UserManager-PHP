@@ -77,14 +77,6 @@ O arquivo `index.php` demonstra os seguintes cenários:
 - **Resultado**: ❌ E-mail já está em uso.  
 
 ### Caso Extra: Array de Usuários (Senha em Hash)
-```php
-Array
-(
-    [0] => Array
-        (
-            [id] => 1
-            [nome] => João Silva
-            [email] => joao@email.com
-            [senha] => $2y$10$AOcgIV2Ch6yF3yYNU.nD4OswbMokVCkR0BsDyd1.0.hTVn/sA6Mhm
-        )
-)
+
+- **Resultado**: ✅ Senha armazenada em hash.
+
