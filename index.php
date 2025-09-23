@@ -29,6 +29,7 @@ print_r([
 $result = $manager->register('Maria Oliveira', 'maria@email.com', 'Senha123');
 echo "<h3>Resultado:</h3>";
 print_r($result);
+echo "<hr>";
 
 echo "<h2>Caso 2 — Cadastro com e-mail inválido</h2>";
 echo "<h3>Entrada:</h3>";
@@ -85,7 +86,7 @@ print_r($result);
 echo "<hr>";
 
 echo "<h2>Caso Extra - Array com dados salvos: senha em hash</h2>";
-print_r($users);
+print_r($manager->getUsers());
 echo "<hr>";
 
 echo "</pre>";

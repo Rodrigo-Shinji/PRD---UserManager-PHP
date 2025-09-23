@@ -5,9 +5,18 @@ class UserManager
     private array $users = [];
     private Validator $validator;
 
-    public function __construct()
+    public function __construct(array $users = [])
     {
         $this->validator = new Validator();
+
+        foreach ($users as $u) {
+        $this->users[] = new User(
+            $u['id'],
+            $u['nome'],
+            $u['email'],
+            $u['senha']
+        );
+    }
     }
 
     public function register(string $name, string $email, string $password): array
@@ -85,12 +94,17 @@ class UserManager
 
     private function success(string $message): array
     {
-        return ['success' => false, 'message' => $message];
+        return ['success' => true, 'message' => $message];
     }
 
     private function error(string $message): array
     {
         return ['error' => true, 'message' => $message];
+    }
+
+    public function getUsers(): array
+    {
+        return $this->users;
     }
 }
 
