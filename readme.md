@@ -31,6 +31,15 @@ http://localhost/user_manager
 
 ---
 
+## 📂 Estrutura do projeto
+
+src/
+ └── docs/
+      ├── User.php
+      ├── UserManager.php
+      ├── Validator.php
+index.php
+
 ## 🧪 Casos de Uso (Cenários de Teste)
 
 O projeto possui testes demonstrados no arquivo `index.php`.
@@ -83,19 +92,3 @@ Array
         )
 
 )
-
-📂 Estrutura do projeto
-pgsql
-Copiar código
-src/
- └── docs/
-      ├── User.php
-      ├── UserManager.php
-      ├── Validator.php
-index.php
-📌 Observações
-Não é utilizado banco de dados (os dados são mantidos em memória para fins de demonstração).
-
-
-Para produção, seria necessário integrar com MySQL/PostgreSQL.
-
