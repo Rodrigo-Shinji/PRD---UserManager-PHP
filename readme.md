@@ -1,86 +1,83 @@
-# Sistema de Usuários (PHP)
+# PRD - Sistema de Usuários
 
-Projeto simples em PHP para gerenciamento de usuários, desenvolvido com foco em **PSR-12**, **POO**, **DRY** e **YAGNI**.
-
-## Integrante
-
-Rodrigo Shinji Yamashita
-RA: 2001443
-
-## 🚀 Como rodar o projeto
-
-1. Clone ou baixe este repositório no diretório do seu servidor local (ex: `htdocs` no XAMPP ou `www` no WAMP).
-2. Certifique-se de que o Apache/PHP está rodando.
-3. Acesse no navegador:
-
-http://localhost/user_manager
-
-> Obs.: `user_manager` deve ser o nome da pasta onde você colocou os arquivos do projeto.
+**Projeto:** Gerenciamento de Usuários em PHP  
+**Autor:** Rodrigo Shinji Yamashita  
+**RA:** 2001443  
 
 ---
 
-## 📋 Funcionalidades implementadas
-
-- **Cadastro de usuários** com validação de e-mail e senha.
-- **Validação de e-mail** (formato válido).
-- **Validação de senha forte** (mínimo 8 caracteres, maiúsculas, minúsculas, número e caractere especial).
-- **Login de usuário** com verificação de hash da senha.
-- **Reset de senha** com validação de complexidade.
-- **Prevenção de e-mails duplicados**.
-- **Mensagens de retorno padronizadas** (`status` e `message`).
+## 📌 Instruções de Execução
+Este projeto foi desenvolvido em **PHP puro** e deve ser executado em um ambiente local, como o **XAMPP**.  
 
 ---
 
-## 📂 Estrutura do projeto
+## ▶️ Como Rodar
+1. Certifique-se de que o **Apache** esteja ativo.  
+2. Crie uma pasta `user_manager` dentro do diretório do servidor local (`htdocs` no XAMPP ou `www` no WAMP).  
+3. Clone ou copie o repositório para dentro dessa pasta.  
+4. Abra o navegador e acesse:  
+http://localhost/user_manager  
+5. O arquivo `index.php` executará automaticamente os casos de teste e exibirá os resultados.  
 
-src/
- └── docs/
-      ├── User.php
-      ├── UserManager.php
-      ├── Validator.php
-index.php
+---
 
-## 🧪 Casos de Uso (Cenários de Teste)
+## 📖 Funcionalidades Implementadas
+O sistema oferece as seguintes funcionalidades principais:  
 
-O projeto possui testes demonstrados no arquivo `index.php`.
+- **Cadastro de Usuários**: Inclui novo usuário com validação de dados.  
+- **Validação de E-mail**: Garante formato correto e evita duplicidade.  
+- **Validação de Senha Forte**: Mínimo 8 caracteres, com letras maiúsculas, minúsculas e números.  
+- **Login de Usuário**: Autenticação com verificação de hash da senha.  
+- **Reset de Senha**: Permite alteração da senha com nova validação de complexidade.  
+- **Mensagens Padronizadas**: Todas as respostas seguem formato com `status` e `message`.  
 
+---
+
+## ⚖️ Regras de Negócio e Validações
+- E-mails devem ser válidos e únicos.  
+- Senhas devem atender aos critérios de segurança (complexidade mínima).  
+- Login só é aceito se o hash da senha for validado com sucesso.  
+- Não é permitido cadastrar usuários com o mesmo e-mail.  
+- Reset de senha deve seguir as mesmas regras de complexidade do cadastro.  
+
+---
+
+## ⚠️ Limitações
+- **Sem persistência em banco de dados**: Os usuários são mantidos em array durante a execução.  
+- **Sistema simplificado**: Voltado para fins acadêmicos e demonstração de boas práticas (**PSR-12**, **POO**, **DRY**, **YAGNI**).  
+
+---
+
+## 🧪 Exemplos de Uso (Casos de Teste)
+O arquivo `index.php` demonstra os seguintes cenários:  
+
+### Caso 1: Cadastro Válido
+- **Entrada**:  
+`['nome' => 'Maria Oliveira', 'email' => 'maria@email.com', 'senha' => 'Senha123']`  
+- **Resultado**: ✅ Usuário cadastrado com sucesso.  
+
+### Caso 2: Cadastro com E-mail Inválido
+- **Entrada**:  
+`['nome' => 'Pedro', 'email' => 'pedro@@email', 'senha' => 'Senha123']`  
+- **Resultado**: ❌ E-mail inválido.  
+
+### Caso 3: Tentativa de Login com Senha Errada
+- **Entrada**:  
+`['email' => 'joao@email.com', 'senha' => 'Errada123']`  
+- **Resultado**: ❌ Credenciais inválidas.  
+
+### Caso 4: Reset de Senha Válido
+- **Entrada**:  
+`['id' => 1, 'nova_senha' => 'NovaSenha1@']`  
+- **Resultado**: ✅ Senha alterada com sucesso.  
+
+### Caso 5: Cadastro com E-mail Duplicado
+- **Entrada**:  
+`['nome' => 'Outro João', 'email' => 'joao@email.com', 'senha' => 'Senha123']`  
+- **Resultado**: ❌ E-mail já está em uso.  
+
+### Caso Extra: Array de Usuários (Senha em Hash)
 ```php
-🔹 Caso 1 — Cadastro válido
-Entrada:
-
-['nome' => 'Maria Oliveira', 'email' => 'maria@email.com', 'senha' => 'SenhA@%123']
-Resultado esperado:
-✅ Usuário cadastrado com sucesso.
-
-🔹 Caso 2 — Cadastro com e-mail inválido
-Entrada:
-
-['nome' => 'Pedro', 'email' => 'pedro@@email', 'senha' => 'Senha123']
-Resultado esperado:
-❌ E-mail inválido.
-
-🔹 Caso 3 — Tentativa de login com senha errada
-Entrada:
-
-['email' => 'joao@email.com', 'senha' => 'Errada123']
-Resultado esperado:
-❌ Credenciais inválidas.
-
-🔹 Caso 4 — Reset de senha válido
-Entrada:
-
-['id' => 1, 'nova_senha' => 'NovaSenha1@']
-Resultado esperado:
-✅ Senha alterada com sucesso.
-
-🔹 Caso 5 — Cadastro de usuário com e-mail duplicado
-Entrada:
-
-['nome' => 'Outro João', 'email' => 'joao@email.com', 'senha' => 'Senha123']
-Resultado esperado:
-❌ E-mail já está em uso.
-
-🔹 Caso Extra - Array com dados salvos: senha em hash
 Array
 (
     [0] => Array
@@ -90,5 +87,4 @@ Array
             [email] => joao@email.com
             [senha] => $2y$10$AOcgIV2Ch6yF3yYNU.nD4OswbMokVCkR0BsDyd1.0.hTVn/sA6Mhm
         )
-
 )
