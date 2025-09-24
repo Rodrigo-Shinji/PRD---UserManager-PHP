@@ -39,7 +39,7 @@ class UserManager
     {
         $user = $this->findByEmail($email);
 
-        if (!$user || !password_verify($password, $user->passwordHash)) {
+        if (!$user || !password_verify($password, $user->getPasswordHash())) {
             return $this->error("Credenciais inválidas.");
         }
 
@@ -58,15 +58,13 @@ class UserManager
             return $this->error("Senha fraca.");
         }
 
-        $user->passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
-
         return $this->success("Senha alterada com sucesso.");
     }
 
     private function findByEmail(string $email): ?User
     {
         foreach ($this->users as $u) {
-            if ($u->email === $email) {
+            if ($u->getEmail() === $email) {
                 return $u;
             }
         }
@@ -76,7 +74,7 @@ class UserManager
     private function findById(int $id): ?User
     {
         foreach ($this->users as $u) {
-            if ($u->id === $id) {
+            if ($u->getId() === $id) {
                 return $u;
             }
         }
