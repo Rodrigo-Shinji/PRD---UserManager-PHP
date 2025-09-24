@@ -44,7 +44,6 @@ O sistema oferece as seguintes funcionalidades principais:
 
 ## ⚠️ Limitações
 - **Sem persistência em banco de dados**: Os usuários são mantidos em array durante a execução.  
-- **Sistema simplificado**: Voltado para fins acadêmicos e demonstração de boas práticas (**PSR-12**, **POO**, **DRY**, **YAGNI**).  
 
 ---
 
@@ -79,5 +78,6 @@ O arquivo `index.php` demonstra os seguintes cenários:
 ### Caso Extra: Array de Usuários (Senha em Hash)
 
 - **Resultado**: ✅ Senha armazenada em hash.
+
 
 
