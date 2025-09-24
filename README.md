@@ -80,3 +80,4 @@ O arquivo `index.php` demonstra os seguintes cenários:
 
 - **Resultado**: ✅ Senha armazenada em hash.
 
+
